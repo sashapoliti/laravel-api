@@ -13,17 +13,27 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         return response()->json([
-            'success' => true,
+            'status' => 'success',
+            'message' => 'Projects retrieved successfully',
             'results' => $projects
-        ]);
+        ], 200);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $project = Project::where('slug', $id)->with('technologies', 'type')->first();
-        return response()->json([
-            'success' => true,
-            'results' => $project
-        ]);
+        $project = Project::where('slug', $slug)->with('technologies', 'type')->first();
+        if (!$project) {
+            return response()->json([
+                'success' => 'error',
+                'message' => 'Project not found'
+            ], 404);
+        } else {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Project retrieved successfully',
+                'results' => $project
+            ], 200);
+        }
+
     }
 }
