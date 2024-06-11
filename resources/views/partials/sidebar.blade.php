@@ -1,5 +1,5 @@
 <nav id="sidebar" class="bg-dark navbar-dark">
-    <a href="https://localhost:5174" class="nav-link text-white">
+    <a href="http://localhost:5174" class="nav-link text-white">
         <h2 class="p-2">
             <i class="fa-solid fa-square-rss"></i> Boolpress
         </h2>
